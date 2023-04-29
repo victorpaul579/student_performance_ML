@@ -46,7 +46,6 @@ class ModelTrainer:
                 "CatBoosting Regressor": CatBoostRegressor(verbose=False),
                 "AdaBoost Regressor": AdaBoostRegressor(),
             }
-
             params={
                 "Decision Tree": {
                     'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
@@ -85,7 +84,6 @@ class ModelTrainer:
                 
             }
 
-
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
                                              models=models,param=params)
             
@@ -111,12 +109,11 @@ class ModelTrainer:
             predicted=best_model.predict(X_test)
 
             r2_square = r2_score(y_test, predicted)
-
-            print("Best Mode : ",best_model)
             return r2_square
-        
+            
+
+
+
             
         except Exception as e:
             raise CustomException(e,sys)
-        
-
